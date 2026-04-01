@@ -4,6 +4,22 @@
 
 Neuroscope is an open-source web app that lets you upload any video, audio, or text and visualize predicted brain activity in an interactive 3D viewer — powered by Meta's [TRIBE v2](https://github.com/facebookresearch/tribev2) foundation model.
 
+## Live Demo
+
+**https://neuroscanner.vercel.app**
+
+Try it now — no install required:
+
+1. Open the link above
+2. Click **"Load Demo Visualization"** to see pre-computed brain activity instantly
+3. Click **"Text"**, type any sentence, and click **"Analyze Text"** to run real TRIBE v2 inference
+4. Use **"Open / Closed"** buttons to split the brain hemispheres like a book
+5. Drag to rotate, scroll to zoom the 3D brain
+
+> **First-request caveat:** The GPU backend runs on [Modal](https://modal.com) and scales to zero when idle. The very first request after inactivity triggers a cold start (~2-3 minutes) while the container boots and loads ~10 GB of model weights. If your first request fails or times out, **simply try again** — the second attempt will succeed and subsequent requests will be fast while the container stays warm (5-minute idle window).
+
+---
+
 ## How it works
 
 1. Upload a video, audio file, or type text
@@ -299,10 +315,8 @@ The API starts on http://localhost:8000. The frontend proxies `/api/*` requests 
 
 | Setting | Location | Description |
 |---|---|---|
-| API URL | `web/app/page.tsx` | Defaults to `window.location.hostname:8000` for production |
-| API proxy | `web/next.config.ts` | `/api/*` → `localhost:8000` (for `npm run dev`) |
-| Upload limit | `web/next.config.ts` | `proxyClientMaxBodySize: 50MB` |
-| Proxy timeout | `web/next.config.ts` | `proxyTimeout: 300000` (5 minutes) |
+| API URL | `NEXT_PUBLIC_API_URL` env var | Set to Modal URL for cloud deploy; omit for on-prem (defaults to `hostname:8000`) |
+| API proxy | `web/next.config.ts` | `/api/*` → `localhost:8000` (dev mode only) |
 | GPU device | `api/server.py` | Auto-selects CUDA; uses `cuda:1` when multiple GPUs present |
 | Model cache | `api/server.py` | Weights cached in `../cache/` relative to `api/` |
 | CORS | `api/server.py` | Allows all origins by default |
