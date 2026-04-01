@@ -20,6 +20,17 @@ Try it now — no install required:
 
 ---
 
+## Who is this for?
+
+- **Neuroscience researchers** — explore how TRIBE v2 encodes different stimuli without writing code; quickly prototype experiments or validate hypotheses about brain responses to language, audio, or video
+- **Educators and students** — use the interactive 3D brain as a teaching tool to show how different regions activate for different inputs
+- **AI/ML engineers** — a ready-made inference pipeline and UI for Meta's multimodal brain encoding model; fork it, swap in your own model, or extend the API
+- **Content creators and marketers** — visualize how your video, podcast, or copy might engage different brain regions; a novel way to think about content impact
+- **Accessibility and BCI researchers** — a starting point for brain-computer interface prototyping with a real multimodal encoder
+- **Curious people** — type any sentence and watch the brain light up; no background in neuroscience required
+
+---
+
 ## How it works
 
 1. Upload a video, audio file, or type text
