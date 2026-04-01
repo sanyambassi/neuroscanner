@@ -30,6 +30,7 @@ image = (
         "cd /opt/tribev2 && pip install -e '.[plotting]'",
     )
     .pip_install("uv")
+    .add_local_file("api/server.py", "/app/server.py")
 )
 
 
@@ -51,6 +52,7 @@ def api():
     os.environ["PATH"] = "/usr/local/bin:" + os.environ.get("PATH", "")
 
     sys.path.insert(0, "/opt/tribev2")
+    sys.path.insert(0, "/app")
 
     from server import app as fastapi_app
 
