@@ -1,20 +1,17 @@
 import type { NextConfig } from "next";
 
+const isDev = process.env.NODE_ENV === "development";
+
 const nextConfig: NextConfig = {
-  ...(process.env.NODE_ENV === "development" && {
-    async rewrites() {
-      return [
-        {
-          source: "/api/:path*",
-          destination: "http://localhost:8000/api/:path*",
-        },
-      ];
-    },
-    experimental: {
-      proxyTimeout: 300000,
-      proxyClientMaxBodySize: 50 * 1024 * 1024,
-    },
-  }),
+  async rewrites() {
+    if (!isDev) return [];
+    return [
+      {
+        source: "/api/:path*",
+        destination: "http://localhost:8000/api/:path*",
+      },
+    ];
+  },
 };
 
 export default nextConfig;
