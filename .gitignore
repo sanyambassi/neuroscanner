@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+web/node_modules/
+
+# Next.js build
+web/.next/
+web/out/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+venv/
+api/venv/
+*.egg-info/
+
+# Model weights cache
+cache/
+
+# Environment
+.env
+.env.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary build artifacts
+*.b64.txt
+cm_b64.txt
+bv_b64.txt
+brainviewer_b64.txt
+colormap_b64.txt
+
+# IDE
+.vscode/
+.idea/
+
+# TRIBE v2 repo (cloned separately)
+tribev2/
